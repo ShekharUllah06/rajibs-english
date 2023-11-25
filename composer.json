@@ -1,0 +1,8 @@
+{
+    "name": "edushoppe/rajibsgnglish",
+    "autoload": {
+        "psr-4": {
+            "RajibsEnglish\\": "src/RajibsEnglish/"
+        }
+    }
+}

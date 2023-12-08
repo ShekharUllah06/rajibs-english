@@ -4,5 +4,8 @@
         "psr-4": {
             "RajibsEnglish\\": "src/RajibsEnglish/"
         }
+    },
+    "require": {
+        "nikic/fast-route": "^1.3"
     }
 }

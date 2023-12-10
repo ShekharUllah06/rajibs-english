@@ -6,6 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'RajibsEnglish\\' => array($baseDir . '/src/RajibsEnglish'),
-    'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'App\\' => array($baseDir . '/app'),
 );

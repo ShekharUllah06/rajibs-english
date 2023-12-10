@@ -1,11 +1,8 @@
 {
-    "name": "edushoppe/rajibsgnglish",
+    "name": "edushoppe/rajibsenglish",
     "autoload": {
         "psr-4": {
-            "RajibsEnglish\\": "src/RajibsEnglish/"
+            "App\\": "app/"
         }
-    },
-    "require": {
-        "nikic/fast-route": "^1.3"
     }
 }

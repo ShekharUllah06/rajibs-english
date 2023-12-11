@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Disable directory listing
+    Options -Indexes
+
+    # Block access to the app directory
+    RewriteRule ^app/ - [F,L]
+
+    # Block access to certain files
+    RewriteRule ^config/ - [F,L]
+    RewriteRule ^vendor/ - [F,L]
+
+    # Route all requests through index.php
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

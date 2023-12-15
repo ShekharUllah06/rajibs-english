@@ -14,6 +14,7 @@ class AdminController
   public function dashboard()
   {
     $content = View::renderPartial('Admin', 'dashboard');
-    return View::render('admin', 'index', ['content' => $content]);
+    return View::render('admin', 'index', ['content' => $content, 'active' => 'dashboard']);
   }
 }
+

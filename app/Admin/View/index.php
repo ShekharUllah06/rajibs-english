@@ -55,16 +55,18 @@
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- dashboard -->
-            <li>
+            <li class="nav-item">
               <a href="dashboard" class="nav-link <?= $active === 'dashboard' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-th"></i>
-                Dashboard
+                <p>
+                  Dashboard
+                </p>
               </a>
             </li>
 
             <!-- /.dashboard -->
             <!-- course -->
-            <li class="nav-item menu-close">
+            <li class="nav-item <?= $expand === 'course' ? 'menu-open' : 'menu-close' ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -74,7 +76,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="?page=addnew" class="nav-link">
+                  <a href="addcourse" class="nav-link <?= $active === 'addcourse' ? 'active' : '' ?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add New</p>
                   </a>
@@ -122,17 +124,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
-      <?php
-      // Include the specific content for each admin page
-      if (isset($_GET['page'])) {
-        $page = $_GET['page'];
-        include("$page.php");
-      } else {
-        // Default content, e.g., dashboard
-        include("dashboard.php");
-      }
-      ?>
+      <?php echo $content; ?>
     </div>
     <!-- /.content-wrapper -->
 

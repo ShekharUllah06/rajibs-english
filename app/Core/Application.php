@@ -32,20 +32,24 @@ class Application
     // Get the request method
     $method = $_SERVER['REQUEST_METHOD'];
 
-    // Load the routes
-    $routes = $this->router->loadRoutes();
+    // Dispatch the request
+    $handler = $this->router->dispatch($method, $uri);
 
-    // Check if the requested route exists
-    if (isset($routes[$method][$uri])) {
-      // Extract the controller and method from the route
-      $handler = $routes[$method][$uri];
+    if ($handler !== null && strpos($handler, '@') !== false) {
+      // Extract the controller and method from the handler
       list($controllerClass, $method) = explode('@', $handler);
 
-      // Create an instance of the controller
-      $controller = new $controllerClass();
+      if (!empty($controllerClass) && class_exists($controllerClass)) {
+        // Create an instance of the controller
+        $controller = new $controllerClass();
 
-      // Call the specified method on the controller
-      call_user_func([$controller, $method]);
+        // Check if the method exists before calling it
+        if (method_exists($controller, $method)) {
+          // Call the specified method on the controller
+          call_user_func([$controller, $method]);
+          return;
+        }
+      }
     } else {
       // Output a 404 Not Found response
       http_response_code(404);

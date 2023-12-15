@@ -12,4 +12,11 @@ class View
     $filePath = str_replace('\\', '/', $filePath);
     include $filePath;
   }
+
+  public static function renderPartial(string $module, string $view, array $data = []): string
+  {
+    ob_start();
+    self::render($module, $view, $data);
+    return ob_get_clean();
+  }
 }

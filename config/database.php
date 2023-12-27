@@ -2,7 +2,7 @@
 return [
   'driver'   => 'mysql',
   'host'     => 'localhost',
-  'database' => 'ecommerce_course',
+  'database' => 'task_management',
   'username' => 'root',
   'password' => '1234',
 ];

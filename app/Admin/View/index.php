@@ -4,14 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rajib's English</title>
+  <title>Task Manager</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="/rajibs-english/assets/admin/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/task-manager/assets/admin/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/rajibs-english/assets/admin/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/task-manager/assets/admin/dist/css/adminlte.min.css">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+  <script src="/task-manager/assets/admin/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/task-manager/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/task-manager/assets/admin/dist/js/adminlte.min.js"></script>
+
+  <!-- jquery-validation -->
+  <script src="/task-manager/assets/admin/plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script src="/task-manager/assets/admin/plugins/jquery-validation/additional-methods.min.js"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -36,6 +48,11 @@
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="logout" role="button">
+            Log Out
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.navbar -->
@@ -44,7 +61,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <span class="brand-text font-weight-light">Rajib's English</span>
+        <span class="brand-text font-weight-light">Task Manager</span>
       </a>
 
       <!-- Sidebar -->
@@ -66,17 +83,17 @@
 
             <!-- /.dashboard -->
             <!-- course -->
-            <li class="nav-item <?= $expand === 'course' ? 'menu-open' : 'menu-close' ?>">
+            <li class="nav-item <?= $expand === 'task' ? 'menu-open' : 'menu-close' ?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Course
+                  Task
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="addcourse" class="nav-link <?= $active === 'addcourse' ? 'active' : '' ?>">
+                  <a href="addtask" class="nav-link <?= $active === 'addtask' ? 'active' : '' ?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add New</p>
                   </a>
@@ -84,7 +101,7 @@
                 <li class="nav-item">
                   <a href="?page=courselist" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Course List</p>
+                    <p>Task List</p>
                   </a>
                 </li>
               </ul>
@@ -104,12 +121,6 @@
                   <a href="?page=changepass" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Change Password</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="?page=newuser" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add New User</p>
                   </a>
                 </li>
               </ul>
@@ -135,7 +146,7 @@
         Anything you want
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2023-2024 <a href="#">Rajib's English</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; 2023-2024 <a href="#">Task Manager</a>.</strong> All rights reserved.
     </footer>
   </div>
   <!-- ./wrapper -->
@@ -143,11 +154,10 @@
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery -->
-  <script src="/rajibs-english/assets/admin/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="/rajibs-english/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="/rajibs-english/assets/admin/dist/js/adminlte.min.js"></script>
+
+
+
+
 </body>
 
 </html>

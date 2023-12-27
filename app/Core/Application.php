@@ -40,8 +40,8 @@ class Application
       list($controllerClass, $method) = explode('@', $handler);
 
       if (!empty($controllerClass) && class_exists($controllerClass)) {
-        // Create an instance of the controller
-        $controller = new $controllerClass();
+        // Create an instance of the controller and pass the Request and Response objects
+        $controller = new $controllerClass(new Request($_GET, $_POST, $_SERVER), new Response());
 
         // Check if the method exists before calling it
         if (method_exists($controller, $method)) {
@@ -56,4 +56,5 @@ class Application
       echo '404 Not Found';
     }
   }
+
 }

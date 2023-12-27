@@ -18,7 +18,6 @@ class Database
     try {
       $this->connection = new PDO($dsn, $username, $password);
       $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      echo("Connected");
     } catch (PDOException $e) {
       throw new Exception("Database connection error: " . $e->getMessage());
     }
@@ -36,6 +35,28 @@ class Database
       );
     }
 
-    return self::$instance->connection;
+    return self::$instance;
+  }
+
+  public function getPDO()
+  {
+    return $this->connection;
+  }
+
+  public function selectOne(string $query, array $params = [])
+  {
+    $statement = $this->executeQuery($query, $params);
+    return $statement->fetch(PDO::FETCH_ASSOC);
+  }
+
+  protected function executeQuery(string $query, array $params = [])
+  {
+    try {
+      $statement = $this->connection->prepare($query);
+      $statement->execute($params);
+      return $statement;
+    } catch (PDOException $e) {
+      throw new Exception("Database query error: " . $e->getMessage());
+    }
   }
 }

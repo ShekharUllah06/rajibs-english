@@ -1,18 +1,26 @@
 <?php
+
+namespace App\Util;
+
+use PDO;
+use ReflectionClass;
+
 class DbHelper
 {
   public static function insert(PDO $db, $object, $table)
   {
     $reflection = new ReflectionClass($object);
-    $properties = $reflection->getProperties();
+    $methods = $reflection->getMethods();
 
     $columns = [];
     $values = [];
 
-    foreach ($properties as $property) {
-      $property->setAccessible(true);
-      $columns[] = $property->getName();
-      $values[] = $property->getValue($object);
+    foreach ($methods as $method) {
+      if (strpos($method->name, 'get') === 0) {
+        $property = lcfirst(substr($method->name, 4));
+        $columns[] = $property;
+        $values[] = $method->invoke($object);
+      }
     }
 
     $columnsString = implode(', ', $columns);

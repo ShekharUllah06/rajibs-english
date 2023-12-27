@@ -1,5 +1,4 @@
 <?php
-// app/Middleware/AuthMiddleware.php
 
 // app/Middleware/AuthMiddleware.php
 
@@ -7,6 +6,8 @@ namespace App\Middleware;
 
 use App\Core\Request;
 use App\Core\Response;
+
+use App\Admin\Service\AdminAuthService;
 
 class AuthMiddleware implements MiddlewareInterface
 {
@@ -18,6 +19,7 @@ class AuthMiddleware implements MiddlewareInterface
     if (!$authenticated) {
       // Redirect to the login page
       $response->redirect('login');
+      
       return $response;
     }
 
@@ -27,6 +29,10 @@ class AuthMiddleware implements MiddlewareInterface
 
   protected function checkAuthentication(Request $request)
   {
-    return true;
+    if (!empty($_SESSION['username'])) {
+      return true; // User is authenticated
+    }
+    return false; // User is not authenticated
   }
+
 }
